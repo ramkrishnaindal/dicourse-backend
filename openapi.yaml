@@ -1,0 +1,73 @@
+openapi: 3.0.0
+info:
+  title: Discourse API Proxy
+  version: 1.0.0
+  description: Express backend for Discourse API endpoints
+servers:
+  - url: http://localhost:3000
+paths:
+  /search.json:
+    get:
+      summary: Search across all content
+      parameters:
+        - name: q
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Search results
+  /posts.json:
+    get:
+      summary: Get posts
+      parameters:
+        - name: topic_id
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Posts data
+  /topics/{id}:
+    get:
+      summary: Get topic by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Topic data
+  /categories/{id}:
+    get:
+      summary: Get category by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Category data
+  /search/advanced:
+    get:
+      summary: Advanced search in topics/categories
+      parameters:
+        - name: q
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum: [topic, category]
+            default: topic
+      responses:
+        '200':
+          description: Search results

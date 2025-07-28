@@ -1,0 +1,118 @@
+{
+  "name": "discourse-search-api",
+  "version": "1.0.0",
+  "description": "MCP server for Discourse API endpoints with advanced search capabilities",
+  "tools": [
+    {
+      "name": "search_discourse",
+      "description": "Search across all Discourse content",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "q": {
+            "type": "string",
+            "description": "Search query"
+          }
+        },
+        "required": ["q"]
+      }
+    },
+    {
+      "name": "get_posts",
+      "description": "Get posts from Discourse",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "topic_id": {
+            "type": "integer",
+            "description": "Topic ID to get posts from"
+          }
+        }
+      }
+    },
+    {
+      "name": "get_topic",
+      "description": "Get topic by ID",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Topic ID"
+          }
+        },
+        "required": ["id"]
+      }
+    },
+    {
+      "name": "get_category",
+      "description": "Get category by ID",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Category ID"
+          }
+        },
+        "required": ["id"]
+      }
+    },
+    {
+      "name": "advanced_search",
+      "description": "Advanced search in topics or categories",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "q": {
+            "type": "string",
+            "description": "Search query"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["topic", "category"],
+            "description": "Search type",
+            "default": "topic"
+          }
+        },
+        "required": ["q"]
+      }
+    },
+    {
+      "name": "search_category",
+      "description": "Search within a specific category by slug",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string",
+            "description": "Category slug (e.g., \"articles\")"
+          },
+          "q": {
+            "type": "string",
+            "description": "Search query"
+          }
+        },
+        "required": ["slug", "q"]
+      }
+    },
+    {
+      "name": "search_tags",
+      "description": "Search by tags",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "tag": {
+            "type": "string",
+            "description": "Tag name"
+          },
+          "q": {
+            "type": "string",
+            "description": "Optional search query within tagged posts"
+          }
+        },
+        "required": ["tag"]
+      }
+    }
+  ]
+}
