@@ -1,4 +1,4 @@
-const redis = require('redis');
+import redis from 'redis';
 
 class Cache {
   constructor() {
@@ -47,4 +47,4 @@ class Cache {
   }
 }
 
-module.exports = new Cache();
+export default new Cache();

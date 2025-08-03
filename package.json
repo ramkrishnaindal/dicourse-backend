@@ -1,13 +1,14 @@
 {
   "name": "discourse-api-proxy",
   "version": "1.0.0",
+  "type": "module",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
     "mcp": "node mcp-server.js",
-    "mcp-direct": "node mcp-server-direct.js",
-    "both": "npm start & node mcp-server.js",
+    "mcp-direct": "node mcp-server.js",
+    "both": "npm start",
     "docker:start": "./docker-start.sh",
     "docker:stop": "docker-compose down",
     "docker:logs": "docker-compose logs -f"
@@ -18,7 +19,7 @@
     "dotenv": "^16.3.1",
     "swagger-ui-express": "^5.0.0",
     "yamljs": "^0.3.0",
-    "@modelcontextprotocol/sdk": "^0.4.0",
+
     "redis": "^4.6.0"
   },
   "devDependencies": {

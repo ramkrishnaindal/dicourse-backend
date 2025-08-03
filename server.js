@@ -1,8 +1,9 @@
-require("dotenv").config();
-const express = require("express");
-const axios = require("axios");
-const swaggerUi = require("swagger-ui-express");
-const YAML = require("yamljs");
+import dotenv from "dotenv";
+import express from "express";
+import axios from "axios";
+import swaggerUi from "swagger-ui-express";
+import YAML from "yamljs";
+dotenv.config();
 
 const swaggerDocument = YAML.load("./openapi.yaml");
 
@@ -33,6 +34,7 @@ app.get("/search.json", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
 // Get posts
 app.get("/posts.json", async (req, res) => {
   try {
@@ -44,6 +46,7 @@ app.get("/posts.json", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
 // Get topic by ID
 app.get("/topics/:id", async (req, res) => {
   try {
@@ -98,6 +101,7 @@ app.get("/search/category/:slug", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
 // Search by tags
 app.get("/search/tags/:tag", async (req, res) => {
   try {
@@ -113,6 +117,7 @@ app.get("/search/tags/:tag", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-app.listen(PORT, "127.0.0.1", () => {
-  console.log(`Internal server running on localhost:${PORT}`);
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server is running on port ${PORT}`);
 });
